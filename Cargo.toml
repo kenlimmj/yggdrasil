@@ -1,8 +1,12 @@
 [package]
-name = "yggdrasil"
-version = "0.1.0"
 authors = ["Lim Mingjie, Kenneth <me@kenlimmj.com>"]
 edition = "2018"
+name = "yggdrasil"
+publish = false
+version = "0.1.0"
 
 [dependencies]
 clap = "2.33.0"
+multimap = "0.5.0"
+strum = "0.15.0"
+strum_macros = "0.15.0"
