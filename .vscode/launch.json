@@ -1,0 +1,59 @@
+{
+  "configurations": [{
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'yggdrasil'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--lib",
+          "--package=yggdrasil"
+        ],
+        "filter": {
+          "name": "yggdrasil",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'cli'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=cli",
+          "--package=yggdrasil"
+        ],
+        "filter": {
+          "name": "cli",
+          "kind": "bin"
+        }
+      },
+      "args": ["add", "expense"],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'cli'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=cli",
+          "--package=yggdrasil"
+        ],
+        "filter": {
+          "name": "cli",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

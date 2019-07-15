@@ -22,15 +22,17 @@ fn get_app_base() -> App<'static, 'static> {
         .version(crate_version!())
 }
 
-
 fn main() {
-    let expense_matchers = expense::get_matchers();
+    let expense_match_handlers = expense::get_match_handlers();
     let matcher_registry = MatcherRegistry {
         matched_services: hashmap! {
-            ServiceName::Expense => expense_matchers
+            ServiceName::Expense => expense_match_handlers
         },
     };
 
     let app = get_app_base().subcommands(matcher_registry.get_matched_commands());
-    matcher_registry.r#match(&app.get_matches());
+    match matcher_registry.get_match_handler(&app.get_matches()) {
+        Some(handler_fn) => handler_fn(),
+        None => ::std::process::exit(0),
+    }
 }
